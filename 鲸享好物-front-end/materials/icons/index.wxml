@@ -1,0 +1,25 @@
+
+<view class="container">
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset">
+
+
+      <view class="loginBox">
+   <view>
+    <view class="input_box_wrapper">
+     <view class="image-wrapper"><image src='../../assets/images/用户.png' style='display:inline;' mode="aspectFit"></image></view>
+     <input class="input_box" placeholder-style='font-size:12px;' placeholder='请输入用户名'></input>
+    </view>
+    <view class="input_box_wrapper">
+     <view class="image-wrapper"><image src='../../assets/images/密码.png' style='display:inline' mode="aspectFit"></image></view>
+     <input class="input_box" placeholder-style='font-size:12px;' placeholder='请输入密码'></input>     
+    </view>
+   </view> 
+ </view>
+      <view class="btn-area">
+        <button style="margin: 30rpx 0" formType="submit" class="blueButton">登录</button>
+      </view>
+    </form>
+  </view>
+
+</view>

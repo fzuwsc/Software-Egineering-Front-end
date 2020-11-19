@@ -1,0 +1,26 @@
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    鲸享好物🐋
+</view>
+<!-- 手机号输入 -->
+<view class="input">
+    <label class="loginlabel">手机号</label>
+    <input class="inputtext"
+    placeholder="请输入手机号"
+    bindinput="TeleNumberInput"
+    value="{{ TeleNumber }}" />
+</view>
+<!-- 验证码输入 -->
+<view class="input">
+    <input class="inputtext"
+    placeholder="请输入验证码"
+    password="{{ true }}"
+    bindinput="CodeNumberInput"
+    value="{{ CodeNumber }}" />
+    <button size="mini" bindtap="SendCode">获取验证码</button>
+</view>
+
+<view class="container">未注册的手机号验证后自动创建摄图账号</view>
+
+<view class="login">
+    <button class="Log" bindtap="Login">登陆</button>
+</view>

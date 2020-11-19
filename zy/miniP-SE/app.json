@@ -1,0 +1,48 @@
+{
+  "pages":[
+    
+    "pages/explorePage/explorePage",
+    "pages/messagePage/messagePage",
+    "pages/minePage/minePage",
+    "pages/firstPage/firstPage",
+
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "鲸享好物",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/explorePage/explorePage",
+        "text": "",
+        "iconPath": "materials/icons/_search.png",
+        "selectedIconPath": "materials/icons/search.png"
+      },
+      {
+        "pagePath": "pages/messagePage/messagePage",
+        "text": "",
+        "iconPath": "materials/icons/_home.png",
+        "selectedIconPath": "materials/icons/home.png"
+      },
+      {
+        "pagePath": "pages/minePage/minePage",
+        "text": "",
+        "iconPath": "materials/icons/_my.png",
+        "selectedIconPath": "materials/icons/my.png"
+      }
+    ]
+  },
+  
+
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

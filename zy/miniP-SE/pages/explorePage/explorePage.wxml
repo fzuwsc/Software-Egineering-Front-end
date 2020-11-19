@@ -1,0 +1,26 @@
+<image
+ class=""
+ src="materials\photos\v2_q8y21p.jpg"
+ mode="bottom"
+ lazy-load="true"
+ binderror=""
+ bindload=""
+>
+
+</image>
+
+<swiper indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" interval="2000" duration="1000" circular="true">
+<swiper-item>
+	<image mode="center" src="https://b1.sbimg.org/file/chevereto-jia/2020/11/17/Q4sBD.png">
+	</image>
+</swiper-item>
+<swiper-item>
+	<image mode="widthFix" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605626527783&di=fa3512dc1f20c6f005e321012780a769&imgtype=0&src=http%3A%2F%2Fimg5.yxlady.com%2FCreative%2FUploadFiles_3321%2F20151119%2F20151119165724535.jpg">
+	</image>
+</swiper-item>
+<swiper-item>
+	<image mode="widthFix" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605626528029&di=9723a909b2e97b2c9feb3cb2c5515fcc&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F27%2F81%2F01200000194677136358818023076.jpg">
+	</image>
+</swiper-item>
+</swiper>
+

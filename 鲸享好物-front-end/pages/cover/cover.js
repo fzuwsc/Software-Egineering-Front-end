@@ -1,4 +1,4 @@
-// pages/firstPage/firstPage.js
+// pages/cover/cover.js
 Page({
 
   /**

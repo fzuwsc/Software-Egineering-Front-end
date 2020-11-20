@@ -1,11 +1,10 @@
 {
   "pages":[
-    
+    "pages/Login/Login",
     "pages/explorePage/explorePage",
     "pages/messagePage/messagePage",
     "pages/minePage/minePage",
-    "pages/firstPage/firstPage",
-
+    "pages/cover/cover",
     "pages/index/index",
     "pages/logs/logs"
   ],

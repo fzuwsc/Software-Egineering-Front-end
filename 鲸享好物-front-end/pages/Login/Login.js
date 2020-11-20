@@ -8,6 +8,10 @@ Page({
     TeleNumber: '',
     //验证码的值
     CodeNumber: '',
+
+    btnValue: '获取验证',
+    btnDisabled: false,
+    second: 60
   },
   //得到输入的内容
   TeleNumberInput: function (e) {
@@ -19,6 +23,7 @@ Page({
   },
   //发送验证码
   SendCode: function () {
+    console.log('请求验证码')
     var num=this.data.TeleNumber;
     var flg=0;
     //检查手机号码是否合法
@@ -52,32 +57,64 @@ Page({
     }
     //调用后端接口
     if( !flg ){
+      var that=this;
       wx.request({
-        url: '/user/sendCode',
+        url: 'http://106.14.209.11:11451/user/sendCode',
         data: {
           phone: num
         },
         method: 'GET',
         success: function( res ) {
-          console.log( res.data )
+          if( res.data.status==200 ){
+            console.log( res.data )
+            that.timer();
+          }
         },
         fail: function( res ) {
-          wx.showModal({
-            title: '提示',
-            content: res.data,
-            success ( res ) {
-              if ( res.confirm ) {
-                console.log( '用户点击确定' )
-              } else if ( res.cancel ) {
-                console.log( '用户点击取消' )
+          if( res.data.status!=200 ){
+            wx.showModal({
+              title: '提示',
+              content: res.data,
+              success ( res ) {
+                if ( res.confirm ) {
+                  console.log( '用户点击确定' )
+                } else if ( res.cancel ) {
+                  console.log( '用户点击取消' )
+                }
               }
-            }
-          })
+            })
+          }
         }
       })
     }
   },
+  timer: function () {
+    let promise = new Promise((resolve, reject) => {
+      let setTimer = setInterval(
+        () => {
+          var second = this.data.second - 1;
+          this.setData({
+            second: second,
+            btnValue: second+'s',
+            btnDisabled: true
+          })
+          if (this.data.second <= 0) {
+            this.setData({
+              second: 60,
+              btnValue: '获取验证',
+              btnDisabled: false
+            })
+            resolve(setTimer)
+          }
+        }
+        , 1000)
+    })
+    promise.then((setTimer) => {
+      clearInterval(setTimer)
+    })
+  },
   Login: function () {
+    console.log('请求登录')
     var num=this.data.TeleNumber;
     var code=this.data.CodeNumber;
     var flg=0;
@@ -112,31 +149,40 @@ Page({
     }
     if(!flg){
       wx.request({
-        url: '/user/login/phone',
+        url: 'http://106.14.209.11:11451/user/login/phone ',
         data: {
-          "phone": num,    //用户手机号
-          "code": code            //短信验证码
+          phone: num,    //用户手机号
+          code: code            //短信验证码
         },
+        method: 'POST',
         header: {
-          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJST0xFIjoiUk9MRV9WSVNJVCxST0xFX1VTRVIiLCJpc3MiOiJGb3Jlc3RqQ2xpbWIiLCJpYXQiOjE1ODU3NDU0NjEsInN1YiI6ImFkbWluIiwiZXhwIjoxNTg1NzQ5MDYxfQ.YMbyRcFZnwKv4veuWfR248E5trGESHiCwcdxaHRQnao"
+          Authorization: wx.getStorageSync("token")
         },
         success: function ( res ) {
-          console.log(res.data)
+          if( res.data.status==200 ){
+            wx.setStorageSync("token", res.header.Authorization);
+            console.log(res.data)
+            wx.switchTab({
+              url: '../explorePage/explorePage'
+            })
+          }
         },
         fail: function ( res ) {
-          wx.showModal({
-            title: '提示',
-            content: res.data,
-            success ( res ) {
-              if ( res.confirm ) {
-                console.log( '用户点击确定' )
-              } else if ( res.cancel ) {
-                console.log( '用户点击取消' )
+          if( res.data.status!=200 ){
+            wx.showModal({
+              title: '提示',
+              content: res.data,
+              success ( res ) {
+                if ( res.confirm ) {
+                  console.log( '用户点击确定' )
+                } else if ( res.cancel ) {
+                  console.log( '用户点击取消' )
+                }
               }
-            }
-          })
+            })
+          }
         }
       })
     }
-  }
+ }
 })

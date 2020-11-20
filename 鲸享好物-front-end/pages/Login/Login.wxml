@@ -1,26 +1,34 @@
-<view class="container" hover-class="none" hover-stop-propagation="false">
-    鲸享好物🐋
-</view>
-<!-- 手机号输入 -->
-<view class="input">
-    <label class="loginlabel">手机号</label>
-    <input class="inputtext"
-    placeholder="请输入手机号"
-    bindinput="TeleNumberInput"
-    value="{{ TeleNumber }}" />
-</view>
-<!-- 验证码输入 -->
-<view class="input">
-    <input class="inputtext"
-    placeholder="请输入验证码"
-    password="{{ true }}"
-    bindinput="CodeNumberInput"
-    value="{{ CodeNumber }}" />
-    <button size="mini" bindtap="SendCode">获取验证码</button>
+<view class="top">
+    <image class="img" src="../../materials/images/v2_qitg24.png"></image>
 </view>
 
-<view class="container">未注册的手机号验证后自动创建摄图账号</view>
+<view class="container">
+    <view class="title" data-boldtype="0">welcome to 鲸享好物</view>
+    <!-- 手机号输入 -->
+    <view class="input1">
+        <image class="phone-icon" src="../../materials/icons/手机.png"></image>
+        <input class="inputtext"
+        placeholder="请输入手机号"
+        placeholder-class="input-placeholder"
+        bindinput="TeleNumberInput"
+        value="{{ TeleNumber }}" />
+    </view>
+    <!-- 验证码输入 -->
+    <view class="input2">
+        <image class="code-icon" src="../../materials/icons/验证码.png" />
+        <input class="inputtext"
+        placeholder="请输入验证码"
+        placeholder-class="input-placeholder"
+        password="{{ true }}"
+        bindinput="CodeNumberInput"
+        value="{{ CodeNumber }}" />
+        <button class="getcode" bindtap="SendCode" disabled="{{ btnDisabled }}">{{ btnValue }}</button>
+    </view>
 
-<view class="login">
-    <button class="Log" bindtap="Login">登陆</button>
+    <view class="con">未注册的手机号验证后自动创建摄图账号</view>
+
+    <button class="Log" bindtap="Login">
+        <view >登陆</view>
+    </button>
 </view>
+
